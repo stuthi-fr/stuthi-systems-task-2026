@@ -1,0 +1,22 @@
+name: Image Validation Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate_orchestration_layers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code Repository Context
+        uses: actions/checkout@v4
+
+      - name: Build and Audit Backend Layer Context
+        run: |
+          docker build -t wec-backend-test:latest ./backend
+
+      - name: Build and Audit Frontend Layer Context
+        run: |
+          docker build -t wec-frontend-test:latest ./frontend

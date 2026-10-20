@@ -3,3 +3,5 @@ app.use(cors({
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Add PATCH to allowed methods
 })); 
+
+console.log("Testing for Phase 6 rn");
